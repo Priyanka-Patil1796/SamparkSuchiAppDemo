@@ -1,0 +1,30 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/grid_view_items"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_album"
+        android:layout_width="150dp"
+        android:layout_height="120dp"
+        android:layout_weight="1"
+        android:backgroundTint="#C39BD3"
+        app:cardUseCompatPadding="true"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/ll">
+        <TextView
+            android:id="@+id/tvAlbumName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@android:color/white"
+            android:text="text"
+            android:textStyle="bold"
+            android:padding="30dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"/>
+
+    </com.google.android.material.card.MaterialCardView>
+</RelativeLayout>

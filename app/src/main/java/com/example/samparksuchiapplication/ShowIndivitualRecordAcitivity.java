@@ -44,7 +44,8 @@ public class ShowIndivitualRecordAcitivity extends AppCompatActivity {
         try {
             if (photo.equals("")){
             }else {
-                Picasso.with(ShowIndivitualRecordAcitivity.this).load(photo).into(imageView);
+                Picasso.with(getApplicationContext()).setLoggingEnabled(true);
+                Picasso.with(getApplicationContext()).load(photo).into(imageView);
             }
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(),""+e.toString(),Toast.LENGTH_SHORT).show();

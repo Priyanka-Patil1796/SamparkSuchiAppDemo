@@ -250,23 +250,19 @@ public class DBHelper extends SQLiteOpenHelper {
         return list;
     }
 
-
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    public ArrayList<ContactDetailsModel> getSearchResult(String name, String occupation,
-                                                          String city, String toBirthDate, String fromBirthDate, String toAniversaryDate, String fromAniversaryDate) {
-        ArrayList<ContactDetailsModel> list = new ArrayList<>();
+    public List<ContactDetailsModel> getMonth(int bmonth) {
+        List<ContactDetailsModel> list = new ArrayList<>();
 
+        // Select All Query
         SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM ContactDetailsTable WHERE bmonth = '" + bmonth + "' or  amonth = '" + bmonth + "'", null);
+//        Cursor cursor = db.rawQuery("SELECT * FROM ContactDetailsTable WHERE contactname = 'Harsh Maloo'", null);
 
-        if(name.equals("")){
-            name= null;
-        }
+        //SQLiteDatabase db = this.getWritableDatabase();
+        //Cursor cursor = db.rawQuery(selectQuery, null);
 
-        Cursor cursor = db.rawQuery("SELECT *,  CASE " +
-                "WHEN '"+name+"'= null THEN null   ELSE contactname = '"+ name+"' END  from ContactDetailsTable ", null);
-
-        Log.e("CURSOR", "" + cursor.getCount());
-
+        // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
                 ContactDetailsModel model = new ContactDetailsModel();
@@ -284,12 +280,76 @@ public class DBHelper extends SQLiteOpenHelper {
                 model.setPhotoUrl(cursor.getString(cursor.getColumnIndex(COLUMN_PHOTO)));
                 model.setMemberCode(cursor.getString(cursor.getColumnIndex(COLUMN__MEMBERCODE)));
                 model.setPinCode(cursor.getString(cursor.getColumnIndex(COLUMN__PINCODE)));
+
                 try {
                     model.setDd(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_DD))));
                     model.setbMonth(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_BMONTH))));
                     model.setaDate(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_ADATE))));
                     model.setAMonth(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_AMONTH))));
                 } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+
+                list.add(model);
+            } while (cursor.moveToNext());
+        }
+        // close db connection
+        db.close();
+        // return notes list
+        return list;
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    public ArrayList<ContactDetailsModel> getSearchResult(String name, String occupation,
+                                                          String city, String toBirthDate, String fromBirthDate, String toAniversaryDate, String fromAniversaryDate) {
+        ArrayList<ContactDetailsModel> list = new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor=null;
+        try {
+//            cursor = db.rawQuery("SELECT * from ContactDetailsTable " +
+//            " WHERE CASE WHEN '"+name+"' IS NULL THEN '' ELSE contactname= '"+name+"' END" +
+//            "AND  CASE WHEN '"+occupation+"' IS NULL THEN '' ELSE occupation= '"+occupation+"' END" +
+//            "AND  CASE WHEN '"+city+"' IS NULL THEN '' ELSE city= '"+city+"' END", null);
+
+            cursor = db.rawQuery("SELECT * from ContactDetailsTable  WHERE CASE WHEN ISNULL('"+name+"','')=''  " +
+                    "then '' else  contactname= '"+name+"' end =ISNULL('"+name+"','') AND " +
+                    "CASE WHEN ISNULL ('"+occupation+"','')='' then '' else  occupation= '"+occupation+"' end =ISNULL('"+occupation+"','')", null);
+        } catch (Exception e) {
+            Toast.makeText(context,""+e.toString(),Toast.LENGTH_LONG).show();
+        }
+
+        Log.e("CURSOR", "" + cursor.getCount());
+
+        if (cursor.moveToFirst())
+        {
+            do
+                {
+                ContactDetailsModel model = new ContactDetailsModel();
+                model.setContactName(cursor.getString(cursor.getColumnIndex(COLUMN__CONTACTNAME)));
+                model.setBirthDate(cursor.getString(cursor.getColumnIndex(COLUMN__BIRTHDATE)));
+                model.setAnniversaryDate(cursor.getString(cursor.getColumnIndex(COLUMN_ANNIVERSARYDATE)));
+                model.setPhoneNumber(cursor.getString(cursor.getColumnIndex(COLUMN_CONTACT_NUMBER)));
+                model.setPhonenNumber1(cursor.getString(cursor.getColumnIndex(COLUMN_CONTACT_NUMBER1)));
+                model.setRecordId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN__RECORDID))));
+                model.setAddress(cursor.getString(cursor.getColumnIndex(COLUMN__ADDRESS)));
+                model.setOccupation(cursor.getString(cursor.getColumnIndex(COLUMN__OCCUPATION)));
+                model.setCity(cursor.getString(cursor.getColumnIndex(COLUMN__CITY)));
+                model.setState(cursor.getString(cursor.getColumnIndex(COLUMN__STATE)));
+                model.setEmailId(cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL_ID)));
+                model.setPhotoUrl(cursor.getString(cursor.getColumnIndex(COLUMN_PHOTO)));
+                model.setMemberCode(cursor.getString(cursor.getColumnIndex(COLUMN__MEMBERCODE)));
+                model.setPinCode(cursor.getString(cursor.getColumnIndex(COLUMN__PINCODE)));
+                try
+                {
+                    model.setDd(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_DD))));
+                    model.setbMonth(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_BMONTH))));
+                    model.setaDate(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_ADATE))));
+                    model.setAMonth(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_AMONTH))));
+                } catch (NumberFormatException e)
+                {
                     e.printStackTrace();
                 }
                 list.add(model);

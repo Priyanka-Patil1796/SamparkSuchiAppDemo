@@ -1,21 +1,19 @@
 package com.example.samparksuchiapplication;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.format.DateFormat;
 import android.text.format.Time;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Toast;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -154,14 +152,14 @@ public class SearchPeopleActivity  extends AppCompatActivity {
             public void onClick(View view) {
 //                if (checkValidation())
                 {
-                   DBHelper helper = new DBHelper(getApplicationContext());
-                   list =  helper.getSearchResult(etName.getText().toString(),
-                           etOccupation.getText().toString(),etCity.getText().toString(),
-                           etBirthDate.getText().toString(),etToBirthDate.getText().toString(),
-                           etAnniversaryDate.getText().toString(),etToAnniDate.getText().toString());
-                       Intent intent = new Intent(getApplicationContext(),SearchPeopleResult.class);
-                       intent.putExtra("list", list);
-                       startActivity(intent);
+//                   DBHelper helper = new DBHelper(getApplicationContext());
+//                   list =  helper.getSearchResult(etName.getText().toString(),
+//                           etOccupation.getText().toString(),etCity.getText().toString(),
+//                           etBirthDate.getText().toString(),etToBirthDate.getText().toString(),
+//                           etAnniversaryDate.getText().toString(),etToAnniDate.getText().toString());
+//                       Intent intent = new Intent(getApplicationContext(), SearchPeopleResultActivity.class);
+//                       intent.putExtra("list", list);
+//                       startActivity(intent);
                 }
             }
         });

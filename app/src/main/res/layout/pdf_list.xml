@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_pdf"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/card_edge_blue">
+
+        <TextView
+            android:id="@+id/tv_pdf_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Album"
+            android:padding="10dp"
+            android:drawableRight="@drawable/ic_pdf"
+            android:textColor="@android:color/black"
+            android:textSize="15dp"/>
+
+    </com.google.android.material.card.MaterialCardView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"
+        android:layout_marginTop="5dp"/>
+</LinearLayout>

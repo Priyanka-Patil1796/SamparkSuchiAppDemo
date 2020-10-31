@@ -3,6 +3,9 @@ package com.example.samparksuchiapplication.Model;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class DataProccessor
 {
     private static Context context;
@@ -24,7 +27,19 @@ public class DataProccessor
         }
     }
 
-   public  void setIntDay( String key, int value) {
+    public  void setInt(String key, int value) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME,0);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(key,value);
+        editor.apply();
+    }
+
+    public  int getInt(String key) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, 0);
+        return prefs.getInt(key, 0);
+    }
+
+    public  void setIntDay( String key, int value) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME,0);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt(key, value);

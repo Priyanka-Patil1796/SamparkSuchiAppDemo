@@ -5,24 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.icu.text.UnicodeSetSpanner;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.CalendarContract;
 import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -35,13 +29,9 @@ import com.example.samparksuchiapplication.DataBase.DBHelper;
 import com.example.samparksuchiapplication.Model.ContactDetailsModel;
 import com.example.samparksuchiapplication.Model.DataProccessor;
 import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.snackbar.Snackbar;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -49,7 +39,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ContactDetailsAdapter.NumberCallBack {
     MaterialCardView cardView, cardViewFamily, cardViewSearch, cardViewgallery, cardViewPrevious, cardViewMonthly, cardViewGood;
     TextView tvShowate;
     RecyclerView recyclerView;
@@ -57,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
     List<ContactDetailsModel> list1;
     LinearLayout linearLayout;
     ContactDetailsModel model;
-     ProgressDialog progressDialog;
-     ProgressBar progressBar;
+    ProgressDialog progressDialog;
+    ProgressBar progressBar;
     private String mJSONURLString = "http://btwebservices.biyanitechnologies.com/galaxybackupservices/galaxy1.svc/GetBtContactData";
 
 
@@ -116,10 +106,27 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         cardViewgallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AlbumPhotoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        cardViewPrevious.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, PDFActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        cardViewMonthly.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MonthlyCalenderActivity.class);
                 startActivity(intent);
             }
         });
@@ -137,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(JSONArray response) {
                         list = new ArrayList<>();
                         try {
-                            for (int i = 0; i < response.length(); i++) {
+                            for (int i = 0; i <response.length(); i++) {
                                 model = new ContactDetailsModel();
                                 JSONObject student = response.getJSONObject(i);
                                 String recId = student.getString("RecId");
@@ -200,7 +207,6 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                 }
 
-
                                 if (weddding.equals("null") || weddding.equalsIgnoreCase(null)) {
                                 }
 
@@ -239,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error)
                     {
                         // Do something when error occurred
-                        Toast.makeText(getApplicationContext(),""+error.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"please check your internet connection", Toast.LENGTH_SHORT).show();
                         Log.e("error",""+error.toString());
                     }
                 }
@@ -304,7 +310,18 @@ public class MainActivity extends AppCompatActivity {
         proccessor.setIntDay("Day",Integer.parseInt(date1[0]));
         proccessor.setIntMonth("Month",Integer.parseInt(date1[1]));
 
-        ContactDetailsAdapter adapter = new ContactDetailsAdapter(list1,getApplicationContext());
+        for(int i=0;i<list1.size();i++){
+            if (list1.get(i).getAnniversaryDate().equalsIgnoreCase("null")){
+                if (list1.get(i).getaDate()==Integer.parseInt(date1[0]) && list1.get(i).getAMonth()==Integer.parseInt(date1[1])){
+                    list1.remove(i);
+                    i--;
+                } else {
+
+                }
+            }
+        }
+
+        ContactDetailsAdapter adapter = new ContactDetailsAdapter(list1,getApplicationContext(),MainActivity.this);
         recyclerView.setAdapter(adapter);
         progressDialog.cancel();
 
@@ -351,5 +368,12 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         String formattedDate = df.format(c);
         tvShowate.setText(formattedDate);
+    }
+
+    @Override
+    public void getNumber(String phoneNumber) {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData( Uri.parse("tel:" + phoneNumber));
+        startActivity(intent);
     }
 }

@@ -13,7 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.samparksuchiapplication.Model.ContactDetailsModel;
 import java.util.ArrayList;
 
-public class SearchPeopleResult  extends AppCompatActivity
+public class SearchPeopleResultActivity extends AppCompatActivity
 {
     LinearLayout linearLayout;
     ArrayList<ContactDetailsModel> myList;
@@ -63,6 +63,10 @@ public class SearchPeopleResult  extends AppCompatActivity
             aDate.setText(myList.get(i).getAnniversaryDate());
             occupation.setText(myList.get(i).getOccupation());
 
+            if (myList.get(i).getAnniversaryDate().equals(null) || myList.get(i).getAnniversaryDate().equalsIgnoreCase("null")){
+                aDate.setText("-");
+            }
+
             linearLayout.addView(myView);
 
             final int finalI = i;
@@ -108,7 +112,6 @@ public class SearchPeopleResult  extends AppCompatActivity
             });
           }
        }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

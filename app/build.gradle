@@ -5,16 +5,23 @@ android {
     buildToolsVersion "30.0.1"
     defaultConfig {
         applicationId "com.example.samparksuchiapplication"
-        minSdkVersion 15
+        minSdkVersion 17
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 10
+        versionName "1.10"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
@@ -42,4 +49,6 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer:2.7.2'
     implementation "com.google.android.material:material:1.0.0"
     implementation 'com.android.volley:volley:1.1.0'
+    implementation 'com.google.guava:guava:27.0.1-android'
+    implementation 'com.github.barteksc:android-pdf-viewer:2.7.0-beta.1'
 }
