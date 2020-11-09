@@ -26,7 +26,7 @@ public class DisplayPhotoAlbumActivity extends AppCompatActivity implements View
         setContentView(R.layout.display_photo_album_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Photos");
+        getSupportActionBar().setTitle(R.string.app_name);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         gridView = findViewById(R.id.simpleGridView);

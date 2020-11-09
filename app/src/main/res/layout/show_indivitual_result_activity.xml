@@ -10,187 +10,421 @@
         android:id="@+id/appbarlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"/>
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#139AC9"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:text="Departure"
+                android:src="@drawable/logo"
+                android:layout_gravity="right"
+                android:id="@+id/toolbar_image"/>
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
+        android:background="@color/colorAccent"
+        android:layout_height="150dp">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:id="@+id/iv_display_image"
+                android:layout_gravity="center_horizontal"
+                android:foregroundGravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/biyani"
+                />
 
-    <ImageView
-        android:id="@+id/iv_display_image"
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorwhite"
+            android:text="name"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_in"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/card_edge1"
-        app:cardCornerRadius="20dp"
-        android:elevation="5dp">
-
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:textColor="@android:color/black"
+            android:layout_margin="10dp"
+            android:textStyle="bold"
+            android:text="City :"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="1"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textColor="@android:color/black"
-                    android:layout_margin="5dp"
-                    android:text="name"/>
-                <TextView
-                    android:id="@+id/tv_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:layout_weight="1"
-                    android:textColor="@android:color/black"
-                    android:layout_margin="5dp"
-                    android:text="name"/>
+        <TextView
+            android:id="@+id/tv_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="2dp"
+            android:textColor="@android:color/black"
+            android:text="city"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_margin="10dp"
+            android:textStyle="bold"
+            android:text="Address :"/>
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:elevation="2dp"-->
+<!--            android:background="@drawable/card_edge1"-->
+<!--            app:cardUseCompatPadding="true">-->
 
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="1"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textColor="@android:color/black"
-                    android:layout_margin="5dp"
-                    android:text="address"/>
-                <TextView
-                    android:id="@+id/tv_address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textColor="@android:color/black"
-                    android:layout_margin="5dp"
-                    android:text="address"/>
-            </LinearLayout>
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="2dp"
+            android:textColor="@android:color/black"
+            android:text="address"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="1"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textColor="@android:color/black"
-                    android:layout_margin="5dp"
-                    android:text="occupation"/>
-                <TextView
-                    android:id="@+id/tv_occupation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textColor="@android:color/black"
-                    android:layout_margin="5dp"
-                    android:text="occupation"/>
-            </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"/>
+<!--        </androidx.cardview.widget.CardView>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="1"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textColor="@android:color/black"
-                    android:layout_margin="5dp"
-                    android:text="contact number"/>
-                <TextView
-                    android:id="@+id/tv_contact_number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textColor="@android:color/black"
-                    android:layout_margin="5dp"
-                    android:text="contact number"/>
-            </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_margin="10dp"
+            android:textStyle="bold"
+            android:text="Occupation :"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="1"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textColor="@android:color/black"
-                    android:layout_margin="5dp"
-                    android:text="email address"/>
-                <TextView
-                    android:id="@+id/tv_email_address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textColor="@android:color/black"
-                    android:layout_margin="5dp"
-                    android:text="email address"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="1"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textColor="@android:color/black"
-                    android:layout_margin="5dp"
-                    android:text="BirthDate"/>
-                <TextView
-                    android:id="@+id/tv_birth_day"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textColor="@android:color/black"
-                    android:layout_margin="5dp"
-                    android:text="BirthDate"/>
-            </LinearLayout>
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:elevation="2dp"-->
+<!--            android:background="@drawable/card_edge1"-->
+<!--            app:cardUseCompatPadding="true">-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="1"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textColor="@android:color/black"
-                    android:layout_margin="5dp"
-                    android:text="AnniversaryDate"/>
-                <TextView
-                    android:id="@+id/tv_anniversary_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textColor="@android:color/black"
-                    android:layout_margin="5dp"
-                    android:text="AnniversaryDate"/>
-            </LinearLayout>
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+        <TextView
+            android:id="@+id/tv_occupation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="2dp"
+            android:textColor="@android:color/black"
+            android:text="occupation"/>
+<!--        </androidx.cardview.widget.CardView>-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_margin="10dp"
+            android:textStyle="bold"
+            android:text="Contact Number :"/>
+
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:elevation="2dp"-->
+<!--            android:background="@drawable/card_edge1"-->
+<!--            app:cardUseCompatPadding="true">-->
+
+        <TextView
+            android:id="@+id/tv_contact_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="2dp"
+            android:textColor="@android:color/black"
+            android:text="contact number"/>
+<!--        </androidx.cardview.widget.CardView>-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_margin="10dp"
+            android:textStyle="bold"
+            android:text="Email Address :"/>
+
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:elevation="2dp"-->
+<!--            android:background="@drawable/card_edge1"-->
+<!--            app:cardUseCompatPadding="true">-->
+
+        <TextView
+            android:id="@+id/tv_email_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="5dp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="2dp"
+            android:text="Email Address"/>
+<!--        </androidx.cardview.widget.CardView>-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_margin="10dp"
+            android:textStyle="bold"
+            android:text="Birth Date :"/>
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:elevation="2dp"-->
+<!--            android:background="@drawable/card_edge1"-->
+<!--            app:cardUseCompatPadding="true">-->
+
+        <TextView
+            android:id="@+id/tv_birth_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="2dp"
+            android:textColor="@android:color/black"
+            android:text="Birth Date"/>
+<!--        </androidx.cardview.widget.CardView>-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_margin="10dp"
+            android:textStyle="bold"
+            android:text="Anniversary Date:"/>
+
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:elevation="2dp"-->
+<!--            android:background="@drawable/card_edge1"-->
+<!--            app:cardUseCompatPadding="true">-->
+
+        <TextView
+            android:id="@+id/tv_anniversary_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="5dp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="2dp"
+            android:text="Anniversary Date"/>
+<!--        </androidx.cardview.widget.CardView>-->
+    </LinearLayout>
+
+<!--    <ImageView-->
+<!--        android:id="@+id/iv_display_image"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+<!--    <com.google.android.material.card.MaterialCardView-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:id="@+id/cv_in"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/card_edge1"-->
+<!--        android:elevation="5dp">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:weightSum="1"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:orientation="horizontal">-->
+<!--                <TextView-->
+<!--                    android:layout_width="150dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textColor="@android:color/black"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:text="name"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_name"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:text="name"/>-->
+
+<!--            </LinearLayout>-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:weightSum="1"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:orientation="horizontal">-->
+<!--                <TextView-->
+<!--                    android:layout_width="150dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textColor="@android:color/black"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:text="address"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_address"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:text="address"/>-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:weightSum="1"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:orientation="horizontal">-->
+<!--                <TextView-->
+<!--                    android:layout_width="150dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textColor="@android:color/black"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:text="occupation"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_occupation"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:text="occupation"/>-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:weightSum="1"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:orientation="horizontal">-->
+<!--                <TextView-->
+<!--                    android:layout_width="150dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textColor="@android:color/black"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:text="contact number"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_contact_number"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:text="contact number"/>-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:weightSum="1"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:orientation="horizontal">-->
+<!--                <TextView-->
+<!--                    android:layout_width="150dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textColor="@android:color/black"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:text="email address"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_email_address"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:text="email address"/>-->
+<!--            </LinearLayout>-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:weightSum="1"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:orientation="horizontal">-->
+<!--                <TextView-->
+<!--                    android:layout_width="150dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textColor="@android:color/black"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:text="BirthDate"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_birth_day"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:text="BirthDate"/>-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:weightSum="1"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:orientation="horizontal">-->
+<!--                <TextView-->
+<!--                    android:layout_width="150dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textColor="@android:color/black"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:text="AnniversaryDate"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_anniversary_date"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:text="AnniversaryDate"/>-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+<!--    </com.google.android.material.card.MaterialCardView>-->
 </LinearLayout>

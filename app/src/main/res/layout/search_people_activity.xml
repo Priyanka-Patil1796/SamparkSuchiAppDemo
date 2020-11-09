@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@drawable/card_edge1"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -17,8 +16,18 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:background="#139AC9"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:text="Departure"
+                android:src="@drawable/logo"
+                android:layout_gravity="right"
+                android:id="@+id/toolbar_image"/>
+
+        </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -107,89 +116,224 @@
             android:background="@drawable/edit_text_border"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="5dp"/>
-
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pb_dialogue"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="2"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Birth Date :"
+        android:textStyle="bold"
+        android:layout_weight="1"
+        android:textColor="@android:color/holo_red_light"
+        android:layout_margin="10dp"
+        android:textSize="15dp"/>
+    <TextView
+        android:id="@+id/tvResetBirthDate"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        android:textStyle="bold"
+        android:layout_weight="1"
+        android:gravity="right"
+        android:textColor="@android:color/holo_red_light"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="15dp"/>
+</LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2"
-        android:padding="10dp"
         android:orientation="horizontal">
 
-        <TextView
+        <Button
+            android:id="@+id/btnFromBDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BirthDate :"
-            android:textColor="@android:color/black"
-            android:textSize="15dp"/>
+            android:text="from :"/>
         <EditText
-            android:id="@+id/et_birthdate"
+            android:id="@+id/et_tobirthdatedummy"
+            android:focusable="false"
             android:editable="false"
+            android:clickable="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="25dp"
             android:gravity="center_horizontal"
             android:padding="10dp"
-            android:drawableRight="@drawable/ic_date_range"
+            android:layout_gravity="center_horizontal"
             android:layout_weight="1"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="To :"
-            android:textColor="@android:color/black"
-            android:layout_marginLeft="20dp"
-            android:gravity="center_horizontal"
-            android:textSize="15dp"/>
         <EditText
             android:id="@+id/et_tobirthdate"
+            android:focusable="false"
             android:editable="false"
+            android:clickable="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:layout_marginLeft="25dp"
             android:gravity="center_horizontal"
-            android:drawableRight="@drawable/ic_date_range"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal"
             android:layout_weight="1"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2"
-        android:padding="10dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnToBDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To :"/>
+        <EditText
+            android:id="@+id/et_frombirthdatedummy"
+            android:focusable="false"
+            android:editable="false"
+            android:clickable="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginLeft="25dp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"/>
+        <EditText
+            android:id="@+id/et_frombirthdate"
+            android:focusable="false"
+            android:editable="false"
+            android:clickable="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:layout_marginLeft="25dp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <View
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Anniversary Date :"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:textColor="@android:color/holo_red_light"
+            android:layout_margin="10dp"
+            android:textSize="15dp"/>
+        <TextView
+            android:id="@+id/tvResetAnniDate"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Reset"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:textColor="@android:color/holo_red_light"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="30dp"
+            android:textSize="15dp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
         android:orientation="horizontal">
 
-        <TextView
+        <Button
+            android:id="@+id/btnFromAnniDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Aniversary :"
-            android:textColor="@android:color/black"
-            android:textSize="15dp"/>
+            android:text="from :"/>
         <EditText
-            android:id="@+id/et_anniversarydate"
+            android:id="@+id/et_toanniversarydatedummy"
+            android:focusable="false"
             android:editable="false"
+            android:clickable="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="25dp"
             android:gravity="center_horizontal"
             android:padding="10dp"
-            android:drawableRight="@drawable/ic_date_range"
             android:layout_weight="1"/>
-        <TextView
+        <EditText
+            android:id="@+id/et_toanniversarydate"
+            android:focusable="false"
+            android:editable="false"
+            android:clickable="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnToAnniDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="To :"
-            android:textColor="@android:color/black"
-            android:layout_marginLeft="20dp"
-            android:gravity="center_horizontal"
-            android:textSize="15dp"/>
+            android:gravity="center_horizontal"/>
         <EditText
-            android:id="@+id/et_toanniversarydate"
+            android:id="@+id/et_fromanniversarydatedummy"
+            android:focusable="false"
             android:editable="false"
+            android:clickable="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
-            android:drawableRight="@drawable/ic_date_range"
+            android:layout_weight="1"/>
+        <EditText
+            android:id="@+id/et_fromanniversarydate"
+            android:focusable="false"
+            android:editable="false"
+            android:clickable="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginLeft="25dp"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
             android:layout_weight="1"/>
     </LinearLayout>
 

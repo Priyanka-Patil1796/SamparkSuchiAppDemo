@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
+
 import com.example.samparksuchiapplication.Model.AlbumModel;
 import com.example.samparksuchiapplication.R;
 import com.google.android.material.card.MaterialCardView;
@@ -40,7 +42,7 @@ public class ViewAlbumAdapter extends ArrayAdapter {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         v = inflater.inflate(R.layout.view_album_adapter_list, null);
         TextView textView = (TextView) v.findViewById(R.id.tvAlbumName);
-        MaterialCardView cardView = (MaterialCardView) v.findViewById(R.id.cv_album);
+        CardView cardView = (CardView) v.findViewById(R.id.cv_album);
         textView.setText(albumList.get(position).getAlbum());
 
         cardView.setOnClickListener(new View.OnClickListener() {

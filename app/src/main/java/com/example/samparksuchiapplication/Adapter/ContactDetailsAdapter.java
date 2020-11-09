@@ -15,7 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.samparksuchiapplication.Model.ContactDetailsModel;
 import com.example.samparksuchiapplication.Model.DataProccessor;
 import com.example.samparksuchiapplication.R;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class ContactDetailsAdapter extends RecyclerView.Adapter<ContactDetailsAdapter.ViewHolder> {
@@ -70,12 +74,51 @@ public class ContactDetailsAdapter extends RecyclerView.Adapter<ContactDetailsAd
 
                 if (!model.getBirthDate().equals("null") && !model.getAnniversaryDate().equals("null")) {
                     try {
-                        if (bDay == Integer.parseInt(date1[2]) && bMonth == Integer.parseInt(date1[1]) && bDay == Integer.parseInt(date2[2]) && bMonth == Integer.parseInt(date2[1])) {
-                            holder.bdate.setText("Birth Date:" + model.getBirthDate() + "\n" + "Anniversary Date:" + model.getAnniversaryDate());
+                        if (bDay == Integer.parseInt(date1[2]) && bMonth == Integer.parseInt(date1[1])
+                                && bDay == Integer.parseInt(date2[2]) && bMonth == Integer.parseInt(date2[1])) {
+
+
+                            DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+                            DateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
+                            String inputDateStr= model.getBirthDate();
+                            Date date = inputFormat.parse(inputDateStr);
+                            String BirthdayDate = outputFormat.format(date);
+
+                            DateFormat inputFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+                            DateFormat outputFormat1 = new SimpleDateFormat("dd/MM/yyyy");
+                            String inputDateStr1= model.getAnniversaryDate();
+                            Date dateA = inputFormat1.parse(inputDateStr1);
+                            String AnniversaryDate = outputFormat1.format(dateA);
+
+
+//                            holder.bdate.setText("Birth Date:" + model.getBirthDate() + "\n" + "Anniversary Date:" + model.getAnniversaryDate());
+
+                            holder.bdate.setText("Birth Date:" + BirthdayDate + "\n" + "Anniversary Date:" + AnniversaryDate);
+
                         } else if (bDay == Integer.parseInt(date1[2]) && bMonth == Integer.parseInt(date1[1])) {
-                            holder.bdate.setText("B Date:" + model.getBirthDate());
+
+                            DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+                            DateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
+                            String inputDateStr= model.getBirthDate();
+                            Date date = inputFormat.parse(inputDateStr);
+                            String BirthdayDate = outputFormat.format(date);
+
+//                            holder.bdate.setText("B Date:" + model.getBirthDate());
+
+                            holder.bdate.setText("B Date:" + BirthdayDate);
+
                         } else if (bDay == Integer.parseInt(date2[2]) && bMonth == Integer.parseInt(date2[1])) {
-                            holder.bdate.setText("Anniversary Date:" + model.getAnniversaryDate());
+
+                            DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+                            DateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
+                            String inputDateStr= model.getAnniversaryDate();
+                            Date date = inputFormat.parse(inputDateStr);
+                            String AnniversaryDate = outputFormat.format(date);
+
+//                            holder.bdate.setText("Anniversary Date:" + model.getAnniversaryDate());
+
+                            holder.bdate.setText("Anniversary Date:" + AnniversaryDate);
+
                         } else {
                             // holder.number.setVisibility(View.GONE);
                         }
@@ -85,7 +128,17 @@ public class ContactDetailsAdapter extends RecyclerView.Adapter<ContactDetailsAd
                 } else if (!model.getBirthDate().equals("null") && model.getAnniversaryDate().equals("null")) {
                     try {
                         if (bDay == Integer.parseInt(date1[2]) && bMonth == Integer.parseInt(date1[1])) {
-                            holder.bdate.setText("B Date:" + model.getBirthDate());
+
+                            DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+                            DateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
+                            String inputDateStr= model.getBirthDate();
+                            Date date = inputFormat.parse(inputDateStr);
+                            String BirthdayDate = outputFormat.format(date);
+
+//                            holder.bdate.setText("B Date:" + model.getBirthDate());
+
+                            holder.bdate.setText("B Date:" + BirthdayDate);
+
                         } else {
 //                      holder.linearLayout.setVisibility(View.GONE);
                         }
@@ -95,7 +148,16 @@ public class ContactDetailsAdapter extends RecyclerView.Adapter<ContactDetailsAd
                 } else if (model.getBirthDate().equals("null") && !model.getAnniversaryDate().equals("null")) {
                     try {
                         if (bDay == Integer.parseInt(date2[2]) && bMonth == Integer.parseInt(date2[1])) {
-                            holder.bdate.setText("Anniversary Date:" + model.getAnniversaryDate());
+                            DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+                            DateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
+                            String inputDateStr= model.getAnniversaryDate();
+                            Date date = inputFormat.parse(inputDateStr);
+                            String AnniversaryDate = outputFormat.format(date);
+
+//                            holder.bdate.setText("Anniversary Date:" + model.getAnniversaryDate());
+
+                            holder.bdate.setText("Anniversary Date:" + AnniversaryDate);
+
                         } else {
 //                       holder.linearLayout.setVisibility(View.GONE);
                         }
@@ -132,7 +194,7 @@ public class ContactDetailsAdapter extends RecyclerView.Adapter<ContactDetailsAd
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView name,bdate,number;
         LinearLayout linearLayout;
         public ViewHolder(@NonNull View itemView) {
@@ -142,12 +204,25 @@ public class ContactDetailsAdapter extends RecyclerView.Adapter<ContactDetailsAd
             number = itemView.findViewById(R.id.tvNumber);
             linearLayout = itemView.findViewById(R.id.ll_o);
             number.setPaintFlags(number.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+            itemView.setOnClickListener(this);
 //            adate = itemView.findViewById(R.id.tvADate);
 //            number1 = itemView.findViewById(R.id.tvPhoneNumber2);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int position = getAdapterPosition();
+            numberCallBack.getRow(list.get(position).getContactName(),list.get(position).getOccupation(),list.get(position).getCity(),
+                    list.get(position).getAddress(),list.get(position).getEmailId(),
+                    list.get(position).getPhoneNumber(),list.get(position).getPhonenNumber1(),
+                    list.get(position).getBirthDate(),list.get(position).getAnniversaryDate(),
+                    list.get(position).getRecordId(),list.get(position).getMemberCode(),list.get(position).getPhotoUrl());
         }
     }
 
     public interface NumberCallBack{
         void getNumber(String phoneNumber);
+        void getRow(String contactName, String occupation, String city, String address, String emailId, String phoneNumber, String phonenNumber1, String birthDate, String anniversaryDate,int recordID,
+                    String memberCode,String url);
     }
 }

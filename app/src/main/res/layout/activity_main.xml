@@ -5,22 +5,115 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#f3912C"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/appbarlayout"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:background="#139AC9"
+        android:elevation="4dp">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:text="Departure"
+            android:src="@drawable/logo"
+            android:layout_gravity="left"
+            android:id="@+id/toolbar_image"/>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginRight="50dp"
+            android:orientation="vertical">
 
-    </com.google.android.material.appbar.AppBarLayout>
+            <TextView
+                android:id="@+id/toolbarAppTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_title"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:textColor="@color/colorwhite"
+                android:visibility="visible"/>
+            <TextView
+                android:id="@+id/toolbarAppName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textColor="@color/colorwhite"
+                android:textSize="20dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:visibility="visible"/>
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:id="@+id/appbarlayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="#139AC9"-->
+<!--        android:theme="@style/AppTheme.AppBarOverlay">-->
+
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/toolbar"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            app:popupTheme="@style/AppTheme.PopupOverlay" >-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:weightSum="2"-->
+<!--                android:orientation="horizontal">-->
+<!--                -->
+<!--                <ImageView-->
+<!--                    android:layout_width="50dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:text="Departure"-->
+<!--                    android:src="@drawable/biyani"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    android:layout_gravity="left"-->
+<!--                    android:id="@+id/toolbar_image"-->
+<!--                    />-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/toolbarAppTitle"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/app_title"-->
+<!--                    android:layout_gravity="center_horizontal"-->
+<!--                    android:gravity="center_horizontal"-->
+<!--                    android:textColor="@color/colorwhite"-->
+<!--                    android:visibility="visible"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/toolbarAppName"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/app_name"-->
+<!--                    android:textColor="@color/colorwhite"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:layout_gravity="center_horizontal"-->
+<!--                    android:gravity="center_horizontal"-->
+<!--                    android:visibility="visible"/>-->
+<!--            </LinearLayout>-->
+<!--            </LinearLayout>-->
+<!--        </androidx.appcompat.widget.Toolbar>-->
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
 
     <androidx.core.widget.NestedScrollView
         android:layout_below="@+id/appbarlayout"
@@ -33,34 +126,193 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="|| Shree Hari ||"-->
+<!--            android:textSize="20dp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:gravity="center_horizontal"/>-->
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/ViewPagerThoughts"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:overScrollMode="never"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        </androidx.viewpager.widget.ViewPager>
+
+        <LinearLayout
+            android:id="@+id/SliderDots"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="|| Shree Hari ||"
-            android:textSize="20dp"
-            android:textColor="@android:color/black"
-            android:gravity="center_horizontal"
-            />
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:cardUseCompatPadding="true"
-            android:backgroundTint="@android:color/holo_orange_light"
-            app:cardCornerRadius="0dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Good Thoughts"
-            android:textSize="15dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="@android:color/white"
-            />
-        </androidx.cardview.widget.CardView>
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@android:color/black"/>
+            android:background="@android:color/white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="3"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvFamily"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    app:cardUseCompatPadding="true"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="10dp"
+                    android:backgroundTint="#f91d1016"
+                    android:layout_below="@+id/ll">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:text="Family                                                Tree"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center_horizontal"/>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    app:cardUseCompatPadding="true"
+                    android:backgroundTint="#0d0729"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center_horizontal"
+                        android:text="Search                                           Person"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp"/>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvgallery"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    app:cardUseCompatPadding="true"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="10dp"
+                    android:backgroundTint="#f9363019"
+                    android:layout_below="@+id/ll">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:text="Photo                                             Gallery"
+                        android:textSize="15sp"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center_horizontal"
+                        android:layout_gravity="center_horizontal"/>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="3"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvMonthly"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    app:cardUseCompatPadding="true"
+                    android:backgroundTint="#f92b0d40"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal"
+                        android:text="Monthly Calender"
+                        android:layout_marginTop="20dp"
+                        android:textSize="15sp"
+                        android:textColor="@android:color/white"/>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvGoodThoughts"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    app:cardUseCompatPadding="true"
+                    android:backgroundTint="#f91d1016"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="10dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:gravity="center_horizontal"
+                        android:text="Good                                               Thoughts"
+                        android:clickable="false"
+                        android:textSize="15sp"
+                        android:layout_marginTop="20dp"
+                        android:layout_gravity="center_horizontal"/>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvPrevious"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    app:cardUseCompatPadding="true"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="#f9363019"
+                    app:cardCornerRadius="10dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:gravity="center_horizontal"
+                        android:text="Previous                                              Books"
+                        android:layout_marginTop="20dp"
+                        android:textSize="15sp"
+                        android:layout_gravity="center_horizontal"/>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:background="@android:color/white"/>-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/white"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -89,7 +341,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@android:color/black"/>
+            android:background="@android:color/white"/>
 
         <LinearLayout
             android:id="@+id/container_destacado"
@@ -102,33 +354,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingLeft="10dp"
-                android:background="@drawable/card_edge1"
+                android:paddingRight="10dp"
                 android:orientation="horizontal" >
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:textColor="@android:color/black"
                     android:padding="10dp"
-                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
                     android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:background="@drawable/cell_shape"
                     android:text="Contact Name" />
+<!--                <View-->
+<!--                    android:layout_width="2dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginRight="4dp"-->
+<!--                    android:background="@android:color/black"/>-->
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:padding="10dp"
                     android:textSize="15dp"
                     android:textStyle="bold"
+                   android:gravity="center_horizontal"
                     android:textColor="@android:color/black"
+                    android:background="@drawable/cell_shape"
                     android:text="Birth Date/Anniversary" />
+<!--                <View-->
+<!--                    android:layout_width="2dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginLeft="1dp"-->
+<!--                    android:background="@android:color/black"/>-->
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:textSize="15dp"
                     android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    android:textSize="15dp"
+                    android:background="@drawable/cell_shape"
                     android:textColor="@android:color/black"
                     android:text="Contact Number" />
             </LinearLayout>
@@ -139,177 +407,233 @@
             android:visibility="gone"
             android:layout_height="100dp"/>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/rv_list"/>
-
-         <com.google.android.material.card.MaterialCardView
-             android:id="@+id/cv"
-             android:layout_gravity="center_horizontal"
-             android:layout_width="300dp"
-             android:layout_height="wrap_content"
-             android:background="@drawable/card_edge"
-             android:layout_margin="20dp"
-             android:layout_below="@+id/ll">
-
-             <LinearLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:orientation="vertical">
-
-             <LinearLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:weightSum="2"
-                 android:orientation="horizontal">
-
-                 <com.google.android.material.card.MaterialCardView
-                     android:id="@+id/cvFamily"
-                     android:layout_width="100dp"
-                     android:layout_height="100dp"
-                     android:layout_weight="1"
-                     app:cardUseCompatPadding="true"
-                     android:layout_margin="10dp"
-                     app:cardCornerRadius="10dp"
-                     android:layout_below="@+id/ll">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20dp"
-                        android:textColor="@android:color/holo_blue_light"
-                        android:text="Family Tree"
-                        android:padding="20dp"
-                        android:gravity="center_horizontal"
-                        android:layout_gravity="center_horizontal"/>
-
-                 </com.google.android.material.card.MaterialCardView>
-                 <com.google.android.material.card.MaterialCardView
-                     android:id="@+id/cvSearch"
-                     android:layout_width="100dp"
-                     android:layout_height="100dp"
-                     android:layout_weight="1"
-                     app:cardUseCompatPadding="true"
-                     android:layout_margin="10dp"
-                     app:cardCornerRadius="10dp"
-                     android:layout_below="@+id/ll">
-                     <TextView
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:textSize="20dp"
-                         android:textColor="@android:color/holo_blue_light"
-                         android:gravity="center_horizontal"
-                         android:text="Search Person"
-                         android:padding="20dp"
-                         android:layout_gravity="center_horizontal"/>
-
-                 </com.google.android.material.card.MaterialCardView>
-             </LinearLayout>
-
-                 <LinearLayout
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:weightSum="2"
-                     android:orientation="horizontal">
-
-             <com.google.android.material.card.MaterialCardView
-                      android:id="@+id/cvPrevious"
-                      android:layout_width="80dp"
-                      android:layout_height="100dp"
-                      android:layout_weight="1"
-                      app:cardUseCompatPadding="true"
-                      android:layout_margin="10dp"
-                      android:background="@drawable/card_edge1"
-                      app:cardCornerRadius="10dp">
-                      <TextView
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:textSize="20dp"
-                          android:textColor="@android:color/holo_blue_light"
-                          android:gravity="center_horizontal"
-                          android:text="Previous Books"
-                          android:padding="20dp"
-                          android:layout_gravity="center_horizontal"/>
-                     </com.google.android.material.card.MaterialCardView>
-
-
-                     <com.google.android.material.card.MaterialCardView
-                         android:id="@+id/cvgallery"
-                         android:layout_width="80dp"
-                         android:layout_height="100dp"
-                         android:layout_weight="1"
-                         android:layout_margin="10dp"
-                         app:cardUseCompatPadding="true"
-                         app:cardCornerRadius="10dp"
-                         android:layout_below="@+id/ll">
-                         <TextView
-                             android:layout_width="match_parent"
-                             android:layout_height="wrap_content"
-                             android:textSize="20dp"
-                             android:textColor="@android:color/holo_blue_light"
-                             android:gravity="center_horizontal"
-                             android:text="Gallary Photo"
-                             android:padding="20dp"
-                             android:layout_gravity="center_horizontal"/>
-                     </com.google.android.material.card.MaterialCardView>
-                 </LinearLayout>
-
-                 <LinearLayout
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:weightSum="2"
-                     android:orientation="horizontal">
-
-                     <com.google.android.material.card.MaterialCardView
-                         android:id="@+id/cvMonthly"
-                         android:layout_width="80dp"
-                         android:layout_height="100dp"
-                         android:layout_weight="1"
-                         android:layout_margin="10dp"
-                         app:cardUseCompatPadding="true"
-                         android:background="@drawable/card_edge1"
-                         app:cardCornerRadius="10dp">
-                         <TextView
-                             android:layout_width="match_parent"
-                             android:layout_height="wrap_content"
-                             android:textSize="20dp"
-                             android:textColor="@android:color/holo_blue_light"
-                             android:gravity="center_horizontal"
-                             android:text="Monthly Calender"
-                             android:padding="20dp"
-                             android:layout_gravity="center_horizontal"/>
-                     </com.google.android.material.card.MaterialCardView>
-
-                     <com.google.android.material.card.MaterialCardView
-                         android:id="@+id/cvGoodThoughts"
-                         android:layout_width="80dp"
-                         android:layout_height="100dp"
-                         android:layout_weight="1"
-                         app:cardUseCompatPadding="true"
-                         android:layout_margin="10dp"
-                         app:cardCornerRadius="10dp"
-                         android:layout_below="@+id/ll">
-                         <TextView
-                             android:layout_width="match_parent"
-                             android:layout_height="wrap_content"
-                             android:textSize="20dp"
-                             android:textColor="@android:color/holo_blue_light"
-                             android:gravity="center_horizontal"
-                             android:text="Good Thoughts"
-                             android:padding="20dp"
-                             android:layout_gravity="center_horizontal"/>
-                     </com.google.android.material.card.MaterialCardView>
-                 </LinearLayout>
-             </LinearLayout>
-         </com.google.android.material.card.MaterialCardView>
-        <com.google.android.material.card.MaterialCardView
-            android:layout_gravity="center_horizontal"
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            android:background="@drawable/card_edge">
-        </com.google.android.material.card.MaterialCardView>
+            android:layout_height="match_parent"
+            android:id="@+id/rv_list"/>
+
+<!--             <LinearLayout-->
+<!--                 android:layout_width="match_parent"-->
+<!--                 android:layout_height="wrap_content"-->
+<!--                 android:layout_marginTop="20dp"-->
+<!--                 android:orientation="vertical">-->
+
+<!--             <LinearLayout-->
+<!--                 android:layout_width="match_parent"-->
+<!--                 android:layout_height="wrap_content"-->
+<!--                 android:weightSum="3"-->
+<!--                 android:orientation="horizontal">-->
+
+<!--                 <androidx.cardview.widget.CardView-->
+<!--                     android:id="@+id/cvFamily"-->
+<!--                     android:layout_width="match_parent"-->
+<!--                     android:layout_height="80dp"-->
+<!--                     android:layout_weight="1"-->
+<!--                     app:cardUseCompatPadding="true"-->
+<!--                     android:layout_margin="10dp"-->
+<!--                     app:cardCornerRadius="10dp"-->
+<!--                     android:backgroundTint="#f91d1016"-->
+<!--                     android:layout_below="@+id/ll">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textColor="@android:color/white"-->
+<!--                        android:text="Family                                                Tree"-->
+<!--                        android:layout_gravity="center_horizontal"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        android:gravity="center_horizontal"/>-->
+<!--                 </androidx.cardview.widget.CardView>-->
+
+<!--                 <androidx.cardview.widget.CardView-->
+<!--                     android:id="@+id/cvSearch"-->
+<!--                     android:layout_width="match_parent"-->
+<!--                     android:layout_height="80dp"-->
+<!--                     android:layout_weight="1"-->
+<!--                     app:cardUseCompatPadding="true"-->
+<!--                     android:backgroundTint="#0d0729"-->
+<!--                     android:layout_margin="10dp"-->
+<!--                     app:cardCornerRadius="10dp">-->
+
+<!--                     <TextView-->
+<!--                         android:layout_width="match_parent"-->
+<!--                         android:layout_height="wrap_content"-->
+<!--                         android:layout_gravity="center_horizontal"-->
+<!--                         android:layout_marginTop="20dp"-->
+<!--                         android:gravity="center_horizontal"-->
+<!--                         android:text="Search                                           Person"-->
+<!--                         android:textColor="@android:color/white"-->
+<!--                         android:textSize="15sp"/>-->
+<!--                 </androidx.cardview.widget.CardView>-->
+
+<!--                 <androidx.cardview.widget.CardView-->
+<!--                     android:id="@+id/cvPrevious"-->
+<!--                     android:layout_width="match_parent"-->
+<!--                     android:layout_height="80dp"-->
+<!--                     android:layout_weight="1"-->
+<!--                     app:cardUseCompatPadding="true"-->
+<!--                     android:layout_margin="10dp"-->
+<!--                     android:backgroundTint="#f9363019"-->
+<!--                     app:cardCornerRadius="10dp">-->
+<!--                     <TextView-->
+<!--                         android:layout_width="match_parent"-->
+<!--                         android:layout_height="wrap_content"-->
+<!--                         android:textColor="@android:color/white"-->
+<!--                         android:gravity="center_horizontal"-->
+<!--                         android:text="Previous                                              Books"-->
+<!--                         android:layout_marginTop="20dp"-->
+<!--                         android:textSize="15sp"-->
+<!--                         android:layout_gravity="center_horizontal"/>-->
+<!--                 </androidx.cardview.widget.CardView>-->
+<!--             </LinearLayout>-->
+
+<!--                 <LinearLayout-->
+<!--                     android:layout_width="match_parent"-->
+<!--                     android:layout_height="wrap_content"-->
+<!--                     android:weightSum="3"-->
+<!--                     android:orientation="horizontal">-->
+
+<!--                     <androidx.cardview.widget.CardView-->
+<!--                         android:id="@+id/cvgallery"-->
+<!--                         android:layout_width="match_parent"-->
+<!--                         android:layout_height="80dp"-->
+<!--                         android:layout_weight="1"-->
+<!--                         app:cardUseCompatPadding="true"-->
+<!--                         android:layout_margin="10dp"-->
+<!--                         app:cardCornerRadius="10dp"-->
+<!--                         android:backgroundTint="#f9363019"-->
+<!--                         android:layout_below="@+id/ll">-->
+<!--                         <TextView-->
+<!--                             android:layout_width="match_parent"-->
+<!--                             android:layout_height="wrap_content"-->
+<!--                             android:textColor="@android:color/white"-->
+<!--                             android:text="Gallary                                             Photo"-->
+<!--                             android:textSize="15sp"-->
+<!--                             android:layout_marginTop="20dp"-->
+<!--                             android:gravity="center_horizontal"-->
+<!--                             android:layout_gravity="center_horizontal"/>-->
+
+<!--                     </androidx.cardview.widget.CardView>-->
+<!--                     <androidx.cardview.widget.CardView-->
+<!--                         android:id="@+id/cvMonthly"-->
+<!--                         android:layout_width="match_parent"-->
+<!--                         android:layout_height="80dp"-->
+<!--                         android:layout_weight="1"-->
+<!--                         app:cardUseCompatPadding="true"-->
+<!--                         android:backgroundTint="#f92b0d40"-->
+<!--                         android:layout_margin="10dp"-->
+<!--                         app:cardCornerRadius="10dp">-->
+
+<!--                         <TextView-->
+<!--                             android:layout_width="match_parent"-->
+<!--                             android:layout_height="wrap_content"-->
+<!--                             android:layout_gravity="center_horizontal"-->
+<!--                             android:gravity="center_horizontal"-->
+<!--                             android:text="Monthly Calender"-->
+<!--                             android:layout_marginTop="20dp"-->
+<!--                             android:textSize="15sp"-->
+<!--                             android:textColor="@android:color/white"/>-->
+<!--                     </androidx.cardview.widget.CardView>-->
+
+<!--                     <androidx.cardview.widget.CardView-->
+<!--                         android:id="@+id/cvGoodThoughts"-->
+<!--                         android:layout_width="match_parent"-->
+<!--                         android:layout_height="80dp"-->
+<!--                         android:layout_weight="1"-->
+<!--                         app:cardUseCompatPadding="true"-->
+<!--                         android:backgroundTint="#f91d1016"-->
+<!--                         android:layout_margin="10dp"-->
+<!--                         app:cardCornerRadius="10dp">-->
+<!--                         <TextView-->
+<!--                             android:layout_width="match_parent"-->
+<!--                             android:layout_height="wrap_content"-->
+<!--                             android:textColor="@android:color/white"-->
+<!--                             android:gravity="center_horizontal"-->
+<!--                             android:text="Good                                               Thoughts"-->
+<!--                             android:clickable="false"-->
+<!--                             android:textSize="15sp"-->
+<!--                             android:layout_marginTop="20dp"-->
+<!--                             android:layout_gravity="center_horizontal"/>-->
+<!--                     </androidx.cardview.widget.CardView>-->
+<!--             </LinearLayout>-->
+
+<!--                 <LinearLayout-->
+<!--                     android:layout_width="match_parent"-->
+<!--                     android:layout_height="wrap_content"-->
+<!--                     android:weightSum="2"-->
+<!--                     android:orientation="horizontal">-->
+
+
+
+<!--                     <com.google.android.material.card.MaterialCardView-->
+<!--                         android:id="@+id/cvgallery"-->
+<!--                         android:layout_width="80dp"-->
+<!--                         android:layout_height="100dp"-->
+<!--                         android:layout_weight="1"-->
+<!--                         android:layout_margin="10dp"-->
+<!--                         app:cardUseCompatPadding="true"-->
+<!--                         app:cardCornerRadius="10dp"-->
+<!--                         android:layout_below="@+id/ll">-->
+<!--                         <TextView-->
+<!--                             android:layout_width="match_parent"-->
+<!--                             android:layout_height="wrap_content"-->
+<!--                             android:textSize="20dp"-->
+<!--                             android:textColor="@color/newcolor"-->
+<!--                             android:gravity="center_horizontal"-->
+<!--                             android:text="Gallary Photo"-->
+<!--                             android:padding="20dp"-->
+<!--                             android:layout_gravity="center_horizontal"/>-->
+<!--                     </com.google.android.material.card.MaterialCardView>-->
+<!--                 </LinearLayout>-->
+
+<!--                 <LinearLayout-->
+<!--                     android:layout_width="match_parent"-->
+<!--                     android:layout_height="wrap_content"-->
+<!--                     android:weightSum="2"-->
+<!--                     android:orientation="horizontal">-->
+
+<!--                     <com.google.android.material.card.MaterialCardView-->
+<!--                         android:id="@+id/cvMonthly"-->
+<!--                         android:layout_width="80dp"-->
+<!--                         android:layout_height="100dp"-->
+<!--                         android:layout_weight="1"-->
+<!--                         android:layout_margin="10dp"-->
+<!--                         app:cardUseCompatPadding="true"-->
+<!--                         android:background="@drawable/card_edge1"-->
+<!--                         app:cardCornerRadius="10dp">-->
+<!--                         <TextView-->
+<!--                             android:layout_width="match_parent"-->
+<!--                             android:layout_height="wrap_content"-->
+<!--                             android:textSize="20dp"-->
+<!--                             android:textColor="@color/newcolor"-->
+<!--                             android:gravity="center_horizontal"-->
+<!--                             android:text="Monthly Calender"-->
+<!--                             android:padding="20dp"-->
+<!--                             android:layout_gravity="center_horizontal"/>-->
+<!--                     </com.google.android.material.card.MaterialCardView>-->
+
+<!--                     <com.google.android.material.card.MaterialCardView-->
+<!--                         android:id="@+id/cvGoodThoughts"-->
+<!--                         android:layout_width="80dp"-->
+<!--                         android:layout_height="100dp"-->
+<!--                         android:layout_weight="1"-->
+<!--                         app:cardUseCompatPadding="true"-->
+<!--                         android:layout_margin="10dp"-->
+<!--                         app:cardCornerRadius="10dp"-->
+<!--                         android:layout_below="@+id/ll">-->
+<!--                         <TextView-->
+<!--                             android:layout_width="match_parent"-->
+<!--                             android:layout_height="wrap_content"-->
+<!--                             android:textSize="20dp"-->
+<!--                             android:textColor="@color/newcolor"-->
+<!--                             android:gravity="center_horizontal"-->
+<!--                             android:text="Bhajan Sangraha"-->
+<!--                             android:padding="20dp"-->
+<!--                             android:layout_gravity="center_horizontal"/>-->
+<!--                     </com.google.android.material.card.MaterialCardView>-->
+<!--                 </LinearLayout>-->
+             </LinearLayout>
+<!--         </com.google.android.material.card.MaterialCardView>-->
     </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </RelativeLayout>

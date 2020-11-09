@@ -10,10 +10,8 @@ import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -22,15 +20,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.samparksuchiapplication.Adapter.ViewAlbumAdapter;
-import com.example.samparksuchiapplication.Adapter.ViewPhotoAdapter;
 import com.example.samparksuchiapplication.Model.AlbumModel;
 import com.example.samparksuchiapplication.Model.DataProccessor;
 import com.google.android.material.card.MaterialCardView;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,14 +36,13 @@ public class AlbumPhotoActivity extends AppCompatActivity  implements ViewAlbumA
     ArrayList<AlbumModel> list = new ArrayList<>();
     private String mJSONURLString = "http://btwebservices.biyanitechnologies.com/galaxybackupservices/galaxy1.svc/GetBtAlbum";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.album_photo_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Albums");
+        getSupportActionBar().setTitle(R.string.app_name);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         gridView = findViewById(R.id.albumGridView);

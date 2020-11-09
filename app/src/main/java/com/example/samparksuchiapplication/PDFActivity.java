@@ -27,7 +27,7 @@ public class PDFActivity extends AppCompatActivity
         setContentView(R.layout.pdf_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("PDF");
+        getSupportActionBar().setTitle(R.string.app_name);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         linearLayout = findViewById(R.id.ll_pdf_activity);
@@ -57,7 +57,7 @@ public class PDFActivity extends AppCompatActivity
         for ( int i=0;i<list.size();i++) {
             View myView = linflater.inflate(R.layout.pdf_list, null); //here item is the the layout you want to inflate
             TextView name = myView.findViewById(R.id.tv_pdf_file);
-            MaterialCardView cardView = myView.findViewById(R.id.cv_pdf);
+          //  MaterialCardView cardView = myView.findViewById(R.id.cv_pdf);
 
             name.setText(list.get(i).getPdfName());
             linearLayout.addView(myView);

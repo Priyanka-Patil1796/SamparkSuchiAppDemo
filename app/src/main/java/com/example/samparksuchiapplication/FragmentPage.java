@@ -1,7 +1,9 @@
 package com.example.samparksuchiapplication;
 
 import android.animation.ArgbEvaluator;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +19,9 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.samparksuchiapplication.DataBase.DBHelper;
 import com.example.samparksuchiapplication.Model.ContactDetailsModel;
 import com.example.samparksuchiapplication.Model.DataProccessor;
+
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -37,6 +42,10 @@ public class FragmentPage extends Fragment {
     int position;
     private ImageView[] dots;
     TextView tvMonthName;
+//    onSomeEventListener someEventListener;
+//    Interface anInterface;
+    final String LOG_TAG = "myLogs";
+
 
     @Nullable
     @Override
@@ -52,13 +61,15 @@ public class FragmentPage extends Fragment {
         helper = new DBHelper(getContext());
         myList = new ArrayList<>();
 
-        if (position>0)
-        {
-            getMonthlyCalender();
-        } else
-        {
-            getCuurentMonthCalender();
-        }
+        getMonthlyCalender();
+
+//        if (position>0)
+//        {
+//            getMonthlyCalender();
+//        } else
+//        {
+//            getCuurentMonthCalender();
+//        }
         return view;
       }
 
@@ -81,6 +92,8 @@ public class FragmentPage extends Fragment {
             Log.e("ChangedMonth", "" + Integer.parseInt(date1[1]));
             String monthName = new SimpleDateFormat("MMMM").format(cdate.getTime());
             tvMonthName.setText(monthName);
+//            anInterface.someEventOccured(monthName);
+//            someEventListener.someEvent(monthName);
 
             myList = helper.getMonth(Integer.parseInt(date1[1]));
 
@@ -102,7 +115,8 @@ public class FragmentPage extends Fragment {
         }
     }
 
-    private void getCuurentMonthCalender() {
+    private void getCuurentMonthCalender()
+    {
         Date c = Calendar.getInstance().getTime();
         System.out.println("Current time => " + c);
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
@@ -115,23 +129,32 @@ public class FragmentPage extends Fragment {
         Log.e("Month", "" + Integer.parseInt(date1[1]));
         String monthName = new SimpleDateFormat("MMMM").format(c.getTime());
         tvMonthName.setText(monthName);
+//        someEventListener.someEvent(monthName);
 
         myList = helper.getMonth(Integer.parseInt(date1[1]));
 
-        for (int i = 0; i < myList.size(); i++) {
-            if (myList.get(i).getAnniversaryDate().equalsIgnoreCase("null")) {
-                if (myList.get(i).getAMonth() == Integer.parseInt(date1[1])) {
+        for (int i = 0; i < myList.size(); i++)
+        {
+            if (myList.get(i).getAnniversaryDate().equalsIgnoreCase("null"))
+            {
+                if (myList.get(i).getAMonth() == Integer.parseInt(date1[1]))
+                {
                     myList.remove(i);
                     i--;
-                } else {
+                } else
+                {
 
                 }
             }
         }
-        getList(myList);
+        try {
+            getList(myList);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void getList(List<ContactDetailsModel> myList) {
+    private void getList(final List<ContactDetailsModel> myList) throws ParseException {
         LayoutInflater linflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         for ( int i=0;i<myList.size();i++)
         {
@@ -144,10 +167,24 @@ public class FragmentPage extends Fragment {
             TextView occupation = myView.findViewById(R.id.tvoccupation);
 
             name.setText(myList.get(i).getContactName());
-            bDate.setText(myList.get(i).getBirthDate());
-//            number.setText(myList.get(i).getPhoneNumber());
+
+            DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
+            String inputDateStr = myList.get(i).getBirthDate();
+            Date date = inputFormat.parse(inputDateStr);
+            String BirthdayDate = outputFormat.format(date);
+            bDate.setText(BirthdayDate);
+
+            DateFormat inputFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat outputFormat1 = new SimpleDateFormat("dd/MM/yyyy");
+            String inputDateStr1 = myList.get(i).getAnniversaryDate();
+            Date date1 = inputFormat1.parse(inputDateStr1);
+            String AnniversaryDate = outputFormat1.format(date1);
+            aDate.setText(AnniversaryDate);
+
+//            bDate.setText(myList.get(i).getBirthDate());
+//            aDate.setText(myList.get(i).getAnniversaryDate());
             city.setText(myList.get(i).getCity());
-            aDate.setText(myList.get(i).getAnniversaryDate());
             occupation.setText(myList.get(i).getOccupation());
 
             if (myList.get(i).getAnniversaryDate().equals(null) || myList.get(i).getAnniversaryDate().equalsIgnoreCase("null")){
@@ -166,6 +203,68 @@ public class FragmentPage extends Fragment {
                 number.setText(myList.get(i).getPhonenNumber1());
             }
             linearLayout.addView(myView);
+
+            final int finalI = i;
+            myView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    try {
+                        Intent intent = new Intent(getContext(), ShowIndivitualRecordAcitivity.class);
+                        intent.putExtra("RecordId", myList.get(finalI).getRecordId());
+                        intent.putExtra("ContactName", myList.get(finalI).getContactName());
+                        intent.putExtra("MemberCode", myList.get(finalI).getMemberCode());
+
+                        if (myList.get(finalI).getPhotoUrl() != null) {
+                            intent.putExtra("Photo", myList.get(finalI).getPhotoUrl());
+                        }
+                        if (myList.get(finalI).getCity() != null) {
+                            intent.putExtra("City", myList.get(finalI).getCity());
+                        }
+                        if (myList.get(finalI).getAddress() != null) {
+                            intent.putExtra("Address", myList.get(finalI).getAddress());
+                        }
+                        if (myList.get(finalI).getOccupation() != null) {
+                            intent.putExtra("Occupation", myList.get(finalI).getOccupation());
+                        }
+                        if ( myList.get(finalI).getPhoneNumber() != null) {
+                            intent.putExtra("PhoneNumber", myList.get(finalI).getPhoneNumber());
+                        }
+                        if (myList.get(finalI).getPhonenNumber1() != null) {
+                            intent.putExtra("PhoneNumber1", myList.get(finalI).getPhonenNumber1());
+                        }
+                        if ( myList.get(finalI).getEmailId() != null) {
+                            intent.putExtra("EmailId", myList.get(finalI).getEmailId());
+                        }
+                        if (myList.get(finalI).getBirthDate() != null) {
+                            intent.putExtra("BirthDate", myList.get(finalI).getBirthDate());
+                        }
+                        if (myList.get(finalI).getAnniversaryDate() != null) {
+                            intent.putExtra("AnniversaryDate", myList.get(finalI).getAnniversaryDate());
+                        }
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
     }
+
+//    public interface onSomeEventListener {
+//        public void someEvent(String s);
+//    }
+//
+//    public interface Interface {
+//        public void someEventOccured(String s);
+//    }
+//
+//    @Override
+//    public void onAttach(Activity activity) {
+//        super.onAttach(activity);
+//        try {
+//            someEventListener = (onSomeEventListener) activity;
+//        } catch (ClassCastException e) {
+//            throw new ClassCastException(activity.toString() + " must implement onSomeEventListener");
+//        }
+//    }
 }

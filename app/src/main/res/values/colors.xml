@@ -5,7 +5,11 @@
     <color name="colorAccent">#D81B60</color>
     <color name="color1">#796e25</color>
     <color name="color2">#7e455e</color>
-    <color name="color3">#796e25</color>
+    <color name="color3">#C98F13</color>
+    <color name="coloradd">#5D1049</color>
     <color name="color4">#59717c</color>
     <color name="color5">#f92b0d40</color>
+    <color name="newcolor">#139AC9</color>
+    <color name="colorwhite">#FFF</color>
+    <color name="red">#800000</color>
 </resources>

@@ -37,7 +37,7 @@ public class ViewPhotoAdapter extends ArrayAdapter {
         v = inflater.inflate(R.layout.view_photo_adapter_list, null);
         TextView textView = (TextView) v.findViewById(R.id.textView);
         ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
-        Picasso.with(context).load(albumList.get(position).getPhoto()).placeholder(R.drawable.biyani).into(imageView);
+        Picasso.get().load(albumList.get(position).getPhoto()).placeholder(R.drawable.biyani).into(imageView);
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override

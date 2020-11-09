@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#f3912C"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -19,7 +18,6 @@
             android:background="#139AC9"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
-
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="60dp"
                 android:layout_height="50dp"
@@ -30,19 +28,9 @@
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
-<!--    <LinearLayout-->
-<!--        android:id="@+id/ll_photo"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:padding="10dp"-->
-<!--        android:layout_margin="10dp"-->
-<!--        android:orientation="vertical">-->
-<!--    </LinearLayout>-->
-    <GridView
-        android:id="@+id/albumGridView"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:footerDividersEnabled="false"
-        android:padding="1dp"
-        android:numColumns="2" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rvThoughts"/>
 </LinearLayout>

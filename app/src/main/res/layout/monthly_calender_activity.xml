@@ -9,16 +9,24 @@
         android:id="@+id/appbarlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"/>
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#139AC9"
             app:popupTheme="@style/AppTheme.PopupOverlay">
-        </androidx.appcompat.widget.Toolbar>
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:text="Departure"
+                android:src="@drawable/logo"
+                android:layout_gravity="right"
+                android:id="@+id/toolbar_image"/>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 <!--        <ScrollView-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="match_parent">-->
@@ -110,6 +118,16 @@
             android:layout_weight="1"
             android:layout_marginRight="100dp"
             android:src="@drawable/ic_arrow_left"/>
+<!--        <TextView-->
+<!--            android:id="@+id/tv_monthName"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="month"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:textColor="@android:color/holo_red_light"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_marginRight="20dp"/>-->
         <ImageView
             android:id="@+id/iv_right_arrow"
             android:layout_width="match_parent"

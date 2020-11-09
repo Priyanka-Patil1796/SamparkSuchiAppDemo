@@ -19,13 +19,21 @@ public class ViewPhotoActivity extends AppCompatActivity {
         imageView = findViewById(R.id.img_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("ViewPhoto");
+        getSupportActionBar().setTitle(R.string.app_name);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        Intent mIntent = getIntent();
-        String imagePath = mIntent.getStringExtra("ImagePath");
-        Picasso.with(getApplicationContext()).load(imagePath).placeholder(R.drawable.biyani).into(imageView);
+        try {
+            Intent mIntent = getIntent();
+            String imagePath = mIntent.getStringExtra("ImagePath");
+            if (imagePath.equals("") || imagePath.equals("null") || imagePath.equals(null)){
+                imageView.setImageResource(R.drawable.biyani);
+            } else {
+                Picasso.get().load(imagePath).placeholder(R.drawable.biyani).into(imageView);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

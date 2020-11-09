@@ -24,7 +24,24 @@ public class ContactDetailsModel implements Serializable {
     public int bMonth;
     public int AMonth;
     public int aDate;
+    private String BMonthDate;
+    private String AMonthDate;
 
+    public String getBMonthDate() {
+        return BMonthDate;
+    }
+
+    public void setBMonthDate(String BMonthDate) {
+        this.BMonthDate = BMonthDate;
+    }
+
+    public String getAMonthDate() {
+        return AMonthDate;
+    }
+
+    public void setAMonthDate(String AMonthDate) {
+        this.AMonthDate = AMonthDate;
+    }
     public int getbMonth() {
         return bMonth;
     }

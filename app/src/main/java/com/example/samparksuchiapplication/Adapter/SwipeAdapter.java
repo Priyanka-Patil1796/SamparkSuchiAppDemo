@@ -1,12 +1,10 @@
 package com.example.samparksuchiapplication.Adapter;
 
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-
 import com.example.samparksuchiapplication.FragmentPage;
 
 public class SwipeAdapter extends FragmentStatePagerAdapter {

@@ -17,8 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#139AC9"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="60dp"
@@ -53,7 +52,7 @@
                 android:orientation="horizontal" >
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:textColor="@android:color/black"
                     android:padding="10dp"
                     android:textStyle="bold"
@@ -65,7 +64,7 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:padding="10dp"
                     android:textSize="15dp"
                     android:textStyle="bold"
@@ -76,7 +75,7 @@
                     android:text="City" />
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:padding="10dp"
                     android:textStyle="bold"
                     android:layout_weight="1"
@@ -86,7 +85,7 @@
                     android:text="Contact Number" />
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:padding="10dp"
                     android:textSize="15dp"
                     android:textStyle="bold"
@@ -97,7 +96,7 @@
                     android:text="Birth Date" />
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:padding="10dp"
                     android:textSize="15dp"
                     android:textStyle="bold"
@@ -108,7 +107,7 @@
                     android:text="Anniversary Date" />
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:padding="10dp"
                     android:textSize="15dp"
                     android:layout_weight="1"
@@ -118,9 +117,10 @@
                     android:textColor="@android:color/black"
                     android:text="Occupation" />
             </LinearLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/rv_all_records"/>
         </LinearLayout>
     </HorizontalScrollView>

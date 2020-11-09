@@ -40,6 +40,7 @@ public class MonthlyCalenderActivity extends AppCompatActivity {
     private ImageView[] dots;
     CalenderAdapter adapter;
     ImageView leftArrow,rightArrow;
+    TextView textView;
 
 
     @Override
@@ -49,10 +50,11 @@ public class MonthlyCalenderActivity extends AppCompatActivity {
         setContentView(R.layout.monthly_calender_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("MonthlyCalender");
+        getSupportActionBar().setTitle(R.string.app_name);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         leftArrow = findViewById(R.id.iv_left_arrow);
+//        textView = findViewById(R.id.tv_monthName);
         rightArrow = findViewById(R.id.iv_right_arrow);
         linearLayout = findViewById(R.id.ll_monthly_calender);
         viewPager = findViewById(R.id.ViewPagerUser);
@@ -83,10 +85,10 @@ public class MonthlyCalenderActivity extends AppCompatActivity {
             }
         });
 
-        viewPager.setOffscreenPageLimit(1);
+     //   viewPager.setOffscreenPageLimit(1);
         SwipeAdapter swipeAdapter = new SwipeAdapter(getSupportFragmentManager());
         viewPager.setAdapter(swipeAdapter);
-        viewPager.setCurrentItem(0);
+    //    viewPager.setCurrentItem(0);
 
        // getMonthlyCalender();
     }
@@ -185,4 +187,10 @@ public class MonthlyCalenderActivity extends AppCompatActivity {
             onBackPressed();
         return super.onOptionsItemSelected(item);
     }
+
+//    @Override
+//    public void someEvent(String monthName) {
+//        textView.setText(monthName);
+//    }
+
 }

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="#f3912C"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -15,16 +16,26 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:background="#139AC9"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:text="Departure"
+                android:src="@drawable/logo"
+                android:layout_gravity="right"
+                android:id="@+id/toolbar_image"/>
+
+        </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:id="@+id/ll_pdf_activity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp"
-        android:layout_margin="10dp"
+        android:layout_margin="2dp"
         android:orientation="vertical">
     </LinearLayout>
 </LinearLayout>
